@@ -74,6 +74,8 @@ If anything goes wrong during the installation process, you can delete all the f
  
 # Plugin Options
 
+For any of these options, before you change anything, it would be best if you restart MusicBee, choose the settings you want, then save the settings. e.g Dont change settings while the plugin/song is playing. This will ensure that there are no crashes or anything unecessary
+
 1) Average Color
 
     Gets the average color of all pixels in the album art and sends it as one solid color to the bulb(s)
@@ -84,7 +86,7 @@ If anything goes wrong during the installation process, you can delete all the f
     
 3) Brightness Slider
 
-    Left-most side of slider is 0% and right most side is 100%. Please Go to Tools > Hue Artwork > Stop before you change brightness and then save. Then you can resume the plugin after you do so
+    Left-most side of slider is 0% and right most side is 100%. 
     
 4) Quality Settings
 
