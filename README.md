@@ -1,4 +1,22 @@
-#
+# Philips Hue Plugin for MusicBee
+
+This is a plugin that communicates with the Philips Hue system. The plugin works by getting the album colors from the album art of the currently playing song and sends the color to the Philips bulbs. There is currently options to display a solid color, or cycle through a color palette.
+
+There is no music syncing as of right now, but do want to add this in the future.
+
+If you want to make changes to my code, and rehost it, feel free to do so.
+
+# Program Specifics
+
+Here are just some things to note about the plugin. Nothing of great importance. If you don't care, you can skip to Installation.
+
+By default, the plugin will look for the embedded artwork in the file, if its not found, it will look for a file called cover.jpg. If the cover file is not found, the color white will be displayed on the bulb. 
+
+The program will jump a little in memory usage for a short time when the track is changed, however, it will close all resources once the processing is finished. 
+
+The Color Palette mode will have a little bit of CPU usage increase because we need to send the next color to the bulb every 4.5s while waiting for an exit flag to stop the running thread and start a new one (if the track is changed).
+
+If you want to have little to no increase in resource usage, choose the Color Average mode. You just wont get any cool color changing effects.
 
 # Requirements
 - Newtonsoft.Json
@@ -14,6 +32,9 @@ Special thanks to the people who created these libraries.
 - [Color Thief](https://github.com/lokesh/color-thief)
 - [TagLib Sharp](https://github.com/mono/taglib-sharp)
 
+# MusicBee API
+
+- [MusicBee API](https://getmusicbee.com/forum/index.php?topic=1972.0)
 
 # Installation
 Please read the installation instructions carefully. Not following the instructions in order is a sure fire way to not make the plugin work. 
@@ -74,3 +95,7 @@ If anything goes wrong during the installation process, you can delete all the f
 6) Resume Plugin
 
     Go to Tools > Hue Artwork > Stop to stop the plugin. This option will reset if you restart MusicBee. Go to Edit > Preferences > Plugins and disable the plugin if you no longer want to use it
+    
+# Side Note
+
+This is the very first piece of software that I'm making available to people other than myself. I'm using this as a learning process so if things aren't as smooth, please dont get too mad :). If theres a feature you would like or you want to suggest improvements, open up an issue and I'll take a look. I can't guaruntee updates will be frequent, or if there'll be any for that matter as I'll be having school but I'll try my best. This of course means that if you want to make changes to my code, please feel free to do so.
