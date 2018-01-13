@@ -1,6 +1,12 @@
 # Philips Hue Plugin for MusicBee
 
-This is a plugin that communicates with the Philips Hue system. The plugin works by getting the album colors from the album art of the currently playing song and sends the color to the Philips bulbs. There is currently options to display a solid color, or cycle through a color palette.
+This is a plugin for [MusicBee](https://getmusicbee.com/) that communicates with the Philips Hue system. The plugin works by getting the album colors from the album art of the currently playing song and sends the color to the Philips bulbs. There is currently options to display a solid color, or cycle through a color palette.
+
+
+<video src="https://github.com/TroyFernandes/MusicBee-Philips-Hue/blob/setup-images/Setup%20Images/gif%20(1).mp4" width="320" height="200" controls preload></video>
+
+
+
 
 There is no music syncing as of right now, but I do want to add this in the future.
 
@@ -42,7 +48,7 @@ Special thanks to the people who created these libraries.
 
 # Installation
 Please read the installation instructions carefully. Not following the instructions in order is a sure fire way to not make the plugin work. 
-1) Download the Zip file from ![releases](https://github.com/TroyFernandes/MusicBee-Philips-Hue/releases) and copy them into your MusicBee/Plugins folder. (Most likely C:\Program Files (x86)\MusicBee\Plugins)
+1) Download the Zip file from [releases](https://github.com/TroyFernandes/MusicBee-Philips-Hue/releases) and copy them into your MusicBee/Plugins folder. (Most likely C:\Program Files (x86)\MusicBee\Plugins)
 
 ![](https://github.com/TroyFernandes/MusicBee-Philips-Hue/blob/b184e55c9d2175e1fbb2d48f03de7ffa684b287c/Setup%20Images/copy%20over%20files.JPG)
 
