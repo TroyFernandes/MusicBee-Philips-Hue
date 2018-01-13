@@ -13,7 +13,7 @@ Special thanks to the people who created these libraries.
 
 # Installation
 Please read the installation instructions carefully. Not following the instructions in order is a sure fire way to not make the plugin work. 
-1) Download the Zip file from (releases) and copy them into your MusicBee/Plugins folder. (Most likely C:\Program Files (x86)\MusicBee\Plugins)
+1) Download the Zip file from ![](https://github.com/TroyFernandes/MusicBee-Philips-Hue/releases) and copy them into your MusicBee/Plugins folder. (Most likely C:\Program Files (x86)\MusicBee\Plugins)
 
 ![](https://github.com/TroyFernandes/MusicBee-Philips-Hue/blob/b184e55c9d2175e1fbb2d48f03de7ffa684b287c/Setup%20Images/copy%20over%20files.JPG)
 
