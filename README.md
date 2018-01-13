@@ -84,7 +84,7 @@ If anything goes wrong during the installation process, you can delete all the f
     
 3) Brightness Slider
 
-    Left-most side of slider is 0% and right most side is 100%
+    Left-most side of slider is 0% and right most side is 100%. Please Go to Tools > Hue Artwork > Stop before you change brightness and then save. Then you can resume the plugin after you do so
     
 4) Quality Settings
 
