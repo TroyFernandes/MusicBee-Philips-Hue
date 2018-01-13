@@ -2,15 +2,19 @@
 
 This is a plugin that communicates with the Philips Hue system. The plugin works by getting the album colors from the album art of the currently playing song and sends the color to the Philips bulbs. There is currently options to display a solid color, or cycle through a color palette.
 
-There is no music syncing as of right now, but do want to add this in the future.
+There is no music syncing as of right now, but I do want to add this in the future.
 
 If you want to make changes to my code, and rehost it, feel free to do so.
+
+NOTE: I just wanted to mention that I've only tried this on one color bulb. I can't afford to shell out $60 CAD for every bulb. However I dont think adding more will be an issue. 
 
 # Program Specifics
 
 Here are just some things to note about the plugin. Nothing of great importance. If you don't care, you can skip to Installation.
 
 By default, the plugin will look for the embedded artwork in the file, if its not found, it will look for a file called cover.jpg. If the cover file is not found, the color white will be displayed on the bulb. 
+
+I can't exactly control what colors the library choses from the image. I would write my own, however image processing is another beast I just dont have time to dedicate to. So if you see your bulb turn blue when theres one small blue item in the image, just be aware.
 
 The program will jump a little in memory usage for a short time when the track is changed, however, it will close all resources once the processing is finished. 
 
