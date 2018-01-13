@@ -27,7 +27,7 @@ namespace MusicBeePlugin
             mbApiInterface.Initialise(apiInterfacePtr);
             about.PluginInfoVersion = PluginInfoVersion;
             about.Name = "Philips Hue";
-            about.Description = "Match your Philips Hue lights to the current song album art\n More Help: github.com/TroyFernandes/HueArtwork";
+            about.Description = "Match your Philips Hue lights to the current song album art\n More Help: github.com/TroyFernandes/MusicBee-Philips-Hue";
             about.Author = "Troy Fernandes (github.com/TroyFernandes)";
             about.TargetApplication = "";   // current only applies to artwork, lyrics or instant messenger name that appears in the provider drop down selector or target Instant Messenger
             about.Type = PluginType.General;
@@ -207,12 +207,20 @@ namespace MusicBeePlugin
             {
                 threadStop = true;
             }
+            foreach (string lightNames in Settings.Instance.HueLights)
+            {
+                new LightStateBuilder().For(lights[lightNames]).TurnOff().Apply();
+            }
 
         }
         private void resumePlugin(object sender, EventArgs args)
         {
             stop = false;
             threadStop = !threadStop;
+            foreach (string lightNames in Settings.Instance.HueLights)
+            {
+                new LightStateBuilder().For(lights[lightNames]).TurnOn().Apply();
+            }
         }
 
 

@@ -20,9 +20,8 @@ namespace MusicBeePlugin.SettingsComponent
 
         private void getKeyButton_Click(object sender, EventArgs e)
         {
-            //Configruation.AddUser();
-            //string apiKey = Configuration.Username;
-            Settings.Instance.APIKey = "";
+            Configuration.AddUser();
+            Settings.Instance.APIKey = Configuration.Username;
             apiKeyLabel.Text = Settings.Instance.APIKey;
         }
     }
