@@ -1,5 +1,8 @@
+#
+
 # Requirements
 - Newtonsoft.Json
+     You dont actually have to download anything extra. The releases will contain all the files needed. 
 
 
 
