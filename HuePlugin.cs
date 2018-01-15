@@ -33,7 +33,7 @@ namespace MusicBeePlugin
             about.Type = PluginType.General;
             about.VersionMajor = 1;  // your plugin version
             about.VersionMinor = 0;
-            about.Revision = 0;
+            about.Revision = 1;
             about.MinInterfaceVersion = MinInterfaceVersion;
             about.MinApiRevision = MinApiRevision;
             about.ReceiveNotifications = (ReceiveNotificationFlags.PlayerEvents | ReceiveNotificationFlags.TagEvents);
@@ -47,10 +47,18 @@ namespace MusicBeePlugin
             Configuration.Initialize(Settings.Instance.APIKey);
             settingsSelector.startup();
             lights = new LightCollection();
-            foreach (string lightNames in Settings.Instance.HueLights)
+            try
             {
-                new LightStateBuilder().For(lights[lightNames]).TurnOn().Apply();
+                foreach (string lightNames in Settings.Instance.HueLights)
+                {
+                    new LightStateBuilder().For(lights[lightNames]).TurnOn().Apply();
+                }
             }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+
             return about;
         }
 
@@ -232,13 +240,15 @@ namespace MusicBeePlugin
             while (!threadStop)
             {
                 index = rnd.Next(0, max);
-                foreach (string lightName in Settings.Instance.HueLights)
+
+                if (stopwatch.ElapsedMilliseconds > 4500)
                 {
-                    if (stopwatch.ElapsedMilliseconds > 4500)
+                    foreach (string lightName in Settings.Instance.HueLights)
                     {
                         new LightStateBuilder().For(lights[lightName]).TransitionTime(30).XYCoordinates(colors[index].Item1, colors[index].Item2).Apply();
                         stopwatch.Restart();
                     }
+
                 }
             }
             threadStop = !threadStop;
