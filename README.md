@@ -12,8 +12,6 @@ There is no music syncing as of right now, but I do want to add this in the futu
 
 If you want to make changes to my code, and rehost it, feel free to do so.
 
-NOTE: I just wanted to mention that I've only tried this on one color bulb. I can't afford to shell out $60 CAD for every bulb. However I dont think adding more will be an issue. 
-
 # Program Specifics
 
 Here are just some things to note about the plugin. Nothing of great importance. If you don't care, you can skip to Installation.
