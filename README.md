@@ -10,7 +10,10 @@ This is a plugin for <a href="https://getmusicbee.com/">MusicBee</a> that commun
 
 There is no music syncing as of right now, but I do want to add this in the future.
 
-If you want to make changes to my code, and rehost it, feel free to do so.
+If you want to make changes to my code, and rehost it, feel free to do so. Just make sure you credit the other people who made the libraries, as well as me.
+
+
+
 
 # Program Specifics
 
