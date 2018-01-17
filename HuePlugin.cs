@@ -7,6 +7,7 @@ using SharpHue;
 using MusicBeePlugin.SettingsComponent;
 using System.Threading;
 using System.Diagnostics;
+using System.Timers;
 
 namespace MusicBeePlugin
 {
@@ -20,6 +21,10 @@ namespace MusicBeePlugin
         Random rnd = new Random();
         bool threadStop = true;
         bool stop = false;
+        //Stopwatch stopwatch = new Stopwatch();
+        System.Timers.Timer aTimer = new System.Timers.Timer();
+
+        int maxRange = 0;
 
         public PluginInfo Initialise(IntPtr apiInterfacePtr)
         {
@@ -32,8 +37,8 @@ namespace MusicBeePlugin
             about.TargetApplication = "";   // current only applies to artwork, lyrics or instant messenger name that appears in the provider drop down selector or target Instant Messenger
             about.Type = PluginType.General;
             about.VersionMajor = 1;  // your plugin version
-            about.VersionMinor = 0;
-            about.Revision = 1;
+            about.VersionMinor = 1;
+            about.Revision = 0;
             about.MinInterfaceVersion = MinInterfaceVersion;
             about.MinApiRevision = MinApiRevision;
             about.ReceiveNotifications = (ReceiveNotificationFlags.PlayerEvents | ReceiveNotificationFlags.TagEvents);
@@ -108,6 +113,8 @@ namespace MusicBeePlugin
         // you need to set about.ReceiveNotificationFlags = PlayerEvents to receive all notifications, and not just the startup event
         public void ReceiveNotification(string sourceFileUrl, NotificationType type)
         {
+            //stopwatch.Start();
+
             //query the duration of the track when the plugin receives a track change event and using a timer query the play position via the api every second for example
             // perform some action depending on the notification type
             switch (type)
@@ -143,7 +150,8 @@ namespace MusicBeePlugin
                         if (Settings.Instance.ColorPalette)
                         {
                             List<Tuple<double, double>> colors = new List<Tuple<double, double>>();
-                            Thread thread;
+                            //Thread thread;
+
 
                             var palette = hue.getColorPalette(albumArtBMP, 8, int.Parse(Settings.Instance.QualitySetting));
                             foreach (string str in palette)
@@ -160,11 +168,26 @@ namespace MusicBeePlugin
                                 colors.Add(Tuple.Create((double)xyWhite[0], (double)xyWhite[1]));
                             }
 
-                            threadStop = !threadStop;
-                            System.Threading.Thread.Sleep(500);
-                            thread = new Thread(() => sendColors(colors, colors.Count));
-                            thread.IsBackground = true;
-                            thread.Start();
+                            //Below is the code for the thread version of sending the color. This 
+                            //has way more cpu usage 
+
+                            //threadStop = !threadStop;
+                            //System.Threading.Thread.Sleep(500);
+                            //thread = new Thread(() => sendColorsThread(colors, colors.Count));
+                            //thread.IsBackground = true;
+                            //thread.Start();
+
+                            maxRange = 0;
+                            aTimer.Dispose();
+                            //System.Threading.Thread.Sleep(1000);
+                            aTimer = new System.Timers.Timer();
+                            aTimer.Stop();
+                            aTimer.Elapsed += (object s, ElapsedEventArgs a) => sendColorsTimer(colors, colors.Count);
+                            aTimer.Start();
+                            aTimer.Interval = 7000;
+                            aTimer.Enabled = true;
+
+
                         }
 
                     }
@@ -232,7 +255,7 @@ namespace MusicBeePlugin
         }
 
 
-        public void sendColors(List<Tuple<double, double>> colors, int max)
+        public void sendColorsThread(List<Tuple<double, double>> colors, int max)
         {
             var stopwatch = new Stopwatch();
             int index;
@@ -254,5 +277,36 @@ namespace MusicBeePlugin
             threadStop = !threadStop;
             return;
         }
+
+        public void sendColorsTimer(List<Tuple<double, double>> colors, int max)
+        {
+            //string response = string.Format("Sending Colors for {0}: {1}: {2}ms", songName, maxRange, stopwatch.Elapsed.TotalSeconds.ToString());
+            //System.Diagnostics.Debug.WriteLine(response);
+
+
+            if (maxRange > max - 1)
+            {
+                maxRange = 0;
+            }
+
+            foreach (string lightName in Settings.Instance.HueLights)
+            {
+                try
+                {
+                    new LightStateBuilder().For(lights[lightName]).TransitionTime(40).XYCoordinates(colors[maxRange].Item1, colors[maxRange].Item2).Apply();
+                    System.Diagnostics.Debug.WriteLine(maxRange.ToString());
+                }
+                catch (IndexOutOfRangeException e)
+                {
+                    new LightStateBuilder().For(lights[lightName]).TransitionTime(40).XYCoordinates(colors[0].Item1, colors[0].Item2).Apply();
+                }
+
+            }
+
+            maxRange++;
+            return;
+
+        }
+
     }
 }
