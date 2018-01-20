@@ -47,6 +47,7 @@ namespace MusicBeePlugin
             mainMenuItem.DropDown.Items.Add("Settings", null, OnOpen);
             mainMenuItem.DropDown.Items.Add("Stop", null, stopPlugin);
             mainMenuItem.DropDown.Items.Add("Resume", null, resumePlugin);
+            Settings.Instance.storagePath = mbApiInterface.Setting_GetPersistentStoragePath();
             Settings.Instance.Initialize();
             Settings.Instance.loadSettings(mbApiInterface.Setting_GetPersistentStoragePath());
             Configuration.Initialize(Settings.Instance.APIKey);

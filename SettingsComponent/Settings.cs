@@ -18,6 +18,7 @@ namespace MusicBeePlugin.SettingsComponent
         public string QualitySetting { get; set; }
         public string Brightness { get; set; }
         public static Settings Instance = new Settings();
+        public string storagePath { get; set; }
 
         public void Initialize()
         {
@@ -105,7 +106,7 @@ namespace MusicBeePlugin.SettingsComponent
             xWriter.WriteElementString("Brightness", Brightness);
             xWriter.WriteEndElement();
             xWriter.Close();
-            MessageBox.Show("File saved @ " + @path);
+            MessageBox.Show("File saved @ " + @path + "HueArtwork_Settings.xml");
 
         }
 

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
 using SharpHue;
+using MusicBeePlugin;
 
 namespace MusicBeePlugin.SettingsComponent
 {
     //get the settings cs file and just do the get set stuff
     public partial class SettingsSelector : Form
     {
+        public Plugin.MusicBeeApiInterface mbApiInterface;
+
 
 
         //Settings settings = new Settings();
@@ -15,6 +18,7 @@ namespace MusicBeePlugin.SettingsComponent
 
             InitializeComponent();
             // var one = Settings.Instance.QualitySetting;
+            mbApiInterface = new Plugin.MusicBeeApiInterface();
 
         }
 
@@ -152,8 +156,7 @@ namespace MusicBeePlugin.SettingsComponent
                 Console.WriteLine(exception);
             }
 
-
-            Settings.Instance.saveSettings(@"C:\Users\Troy F\AppData\Roaming\MusicBee");
+            Settings.Instance.saveSettings(@Settings.Instance.storagePath);
             outputLabel.Text = "Settings Saved";
             if (!string.IsNullOrEmpty(Settings.Instance.APIKey))
             {
