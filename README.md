@@ -10,7 +10,10 @@ This is a plugin for <a href="https://getmusicbee.com/">MusicBee</a> that commun
 
 There is no music syncing as of right now, but I do want to add this in the future.
 
-If you want to make changes to my code, and rehost it, feel free to do so.
+If you want to make changes to my code, and rehost it, feel free to do so. Just make sure you credit the other people who made the libraries, as well as me.
+
+
+
 
 # Program Specifics
 
@@ -22,9 +25,7 @@ I can't exactly control what colors the library choses from the image. I would w
 
 The program will jump a little in memory usage for a short time when the track is changed, however, it will close all resources once the processing is finished. 
 
-The Color Palette mode will have a little bit of CPU usage increase because we need to send the next color to the bulb every 4.5s while waiting for an exit flag to stop the running thread and start a new one (if the track is changed).
-
-If you want to have little to no increase in resource usage, choose the Color Average mode. You just wont get any cool color changing effects.
+~~The Color Palette mode will have a little bit of CPU usage increase because we need to send the next color to the bulb every 4.5s while waiting for an exit flag to stop the running thread and start a new one (if the track is changed).~~ Fixed!
 
 # Requirements
 - Newtonsoft.Json
@@ -46,6 +47,11 @@ Special thanks to the people who created these libraries.
 
 # Installation
 Please read the installation instructions carefully. Not following the instructions in order is a sure fire way to not make the plugin work. 
+
+
+Installation Video: [Link](https://www.youtube.com/watch?v=pC_aEZKBmo4&feature=youtu.be)
+
+
 1) Download the Zip file from [releases](https://github.com/TroyFernandes/MusicBee-Philips-Hue/releases) and copy them into your MusicBee/Plugins folder. (Most likely C:\Program Files (x86)\MusicBee\Plugins)
 
 ![](https://github.com/TroyFernandes/MusicBee-Philips-Hue/blob/b184e55c9d2175e1fbb2d48f03de7ffa684b287c/Setup%20Images/copy%20over%20files.JPG)
@@ -86,7 +92,7 @@ For any of these options, before you change anything, it would be best if you re
   
 2) Color Palette
 
-    Gets the 8 most dominant colors and cycles through them. You might ocassionally see some colors stay longer than others, this is because of how the colors are chosen
+    Gets the 8 most dominant colors and cycles through them.
     
 3) Brightness Slider
 
