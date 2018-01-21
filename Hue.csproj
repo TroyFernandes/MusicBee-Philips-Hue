@@ -73,21 +73,34 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ColorThief.Desktop.v45">
-      <HintPath>F:\Users\Troy F\Downloads\ColorThief-master\ColorThief.Desktop.v45\bin\Debug\ColorThief.Desktop.v45.dll</HintPath>
+    <Reference Include="ColorThief.Desktop.v45, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\ColorThief.Desktop.v45.dll</HintPath>
     </Reference>
-    <Reference Include="ReadOnlyCollectionsInterfaces">
-      <HintPath>..\..\SharpHue-master\SharpHue\bin\Debug\ReadOnlyCollectionsInterfaces.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>References\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SharpHue">
-      <HintPath>..\..\SharpHue-master\SharpHue\bin\Debug\SharpHue.dll</HintPath>
+    <Reference Include="ReadOnlyCollectionsInterfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\ReadOnlyCollectionsInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpHue, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\SharpHue.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http">
+      <HintPath>References\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>References\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="taglib-sharp">
-      <HintPath>..\..\..\Documents\Visual Studio 2017\Projects\ConsoleApp2\ConsoleApp2\bin\Debug\taglib-sharp.dll</HintPath>
+    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>References\taglib-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +151,9 @@
     <EmbeddedResource Include="SettingsComponent\SettingsSelector.resx">
       <DependentUpon>SettingsSelector.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
